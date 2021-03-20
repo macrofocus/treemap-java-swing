@@ -14,14 +14,15 @@ import org.molap.dataframe.JsonDataFrame;
 import javax.swing.*;
 import java.awt.*;
 import java.io.IOException;
+import java.io.InputStream;
 import java.nio.charset.Charset;
 
 public class Demo {
     public static void main(String[] args) throws IOException {
         TreeMap.setLicenseKey("My Company", "ABC12-ABC12-ABC12-ABC12-ABC12-ABC12");
 
-        String json = new String(Demo.class.getResourceAsStream("Forbes Global 2000 - 2020.json").readAllBytes(), Charset.forName("UTF-8"));
-        DataFrame<Integer,String,Object> dataFrame = new JsonDataFrame(json);
+        InputStream inputStream = Demo.class.getResourceAsStream("Forbes Global 2000 - 2020.json");
+        DataFrame<Integer,String,Object> dataFrame = JsonDataFrame.fromInputStream(inputStream);
         AbstractTreeMap<Integer,String> treeMap = new DefaultTreeMap<>(dataFrame);
 
         TreeMapModel<AbstractTreeMapNode<Integer, String>, Integer, String> model = treeMap.getModel();
