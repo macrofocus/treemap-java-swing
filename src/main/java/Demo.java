@@ -16,6 +16,7 @@ import java.awt.*;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.charset.Charset;
+import java.util.Arrays;
 
 public class Demo {
     public static void main(String[] args) throws IOException {
@@ -32,13 +33,13 @@ public class Demo {
         settings.setRendering(RenderingFactory.getFLAT());
 
         // Group by
-        settings.setGroupByByNames("Sector", "Industry");
+        settings.setGroupByColumns(Arrays.asList("Sector", "Industry"));
 
         // Size
-        settings.setSizeByName("Market Value");
+        settings.setSizeColumn("Market Value");
 
         // Color
-        settings.setColorByName("Profits");
+        settings.setColorColumn("Profits");
         TreeMapColumnSettings profitsSettings = settings.getColumnSettings("Profits");
         final FixedPalette negpos = new PaletteFactory().get("negpos").getPalette();
         final MutableColorMap colorMap = model.getColorMap("Profits");
