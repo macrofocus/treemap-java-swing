@@ -49,7 +49,7 @@ distributions {
                 exclude("build/**")
             }
 
-            from("TreeMap API for Java-Swing Developer Guide.pdf")
+//            from("TreeMap API for Java-Swing Developer Guide.pdf")
 
             from("../treemap/build/dokka/html/") {
                 into("dokka")
