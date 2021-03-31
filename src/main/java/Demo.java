@@ -2,7 +2,7 @@ import org.jetbrains.annotations.NotNull;
 import org.mkui.swing.Orientation;
 import com.treemap.*;
 import org.mkui.colormap.MutableColorMap;
-import org.mkui.font.CPFont;
+import org.mkui.font.MkFont;
 import org.mkui.labeling.EnhancedLabel;
 import org.mkui.palette.FixedPalette;
 import org.mkui.palette.PaletteFactory;
@@ -15,7 +15,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.io.IOException;
 import java.io.InputStream;
-import java.nio.charset.Charset;
 import java.util.Arrays;
 
 public class Demo {
@@ -48,7 +47,7 @@ public class Demo {
 
         // Label
         TreeMapColumnSettings companySettings = settings.getColumnSettings("Company");
-        companySettings.setLabelingFont(new CPFont(new Font("Helvetica", Font.PLAIN, 9))); // 9 points is the minimum size that will be displayed
+        companySettings.setLabelingFont(new MkFont(new Font("Helvetica", Font.PLAIN, 9))); // 9 points is the minimum size that will be displayed
         companySettings.setLabelingMinimumCharactersToDisplay(5);
         companySettings.setLabelingResizeTextToFitShape(true);
         companySettings.setLabelingVerticalAlignment(EnhancedLabel.CENTER);
