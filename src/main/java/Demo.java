@@ -21,7 +21,7 @@ public class Demo {
     public static void main(String[] args) throws IOException {
         TreeMap.setLicenseKey("My Company", "ABC12-ABC12-ABC12-ABC12-ABC12-ABC12");
 
-        InputStream inputStream = Demo.class.getResourceAsStream("Forbes Global 2000 - 2020.json");
+        InputStream inputStream = Demo.class.getResourceAsStream("Forbes Global 2000 - 2021.json");
         DataFrame<Integer,String,Object> dataFrame = JsonDataFrame.fromInputStream(inputStream);
         AbstractTreeMap<Integer,String> treeMap = new DefaultTreeMap<>(dataFrame);
 
