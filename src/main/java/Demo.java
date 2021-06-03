@@ -78,6 +78,7 @@ public class Demo {
         configuration.add(createGroupBy(Orientation.Vertical, model, settings));
         configuration.add(createSizeComboBox(model, settings));
         configuration.add(createColorComboBox(model, settings));
+        configuration.add(createAlgorithmComboBox(settings.getDefaultColumnSettings()));
         configuration.add(createRenderingComboBox(settings));
         configuration.add(Box.createGlue());
         return configuration;
@@ -118,6 +119,18 @@ public class Demo {
         sizeComboBox.setBorder(BorderFactory.createTitledBorder("Size"));
         sizeComboBox.setAlignmentX(0);
         return sizeComboBox;
+    }
+
+    private static JComboBox<Algorithm> createAlgorithmComboBox(TreeMapColumnSettings settings) {
+        final JComboBox<Algorithm> algorithmComboBox = new JComboBox<Algorithm>(new SingleSelectionComboBoxModel<>(settings.getAlgorithmProperty(), AlgorithmFactory.Companion.getInstance().getAlgorithms())) {
+            @Override
+            public Dimension getMaximumSize() {
+                return super.getPreferredSize();
+            }
+        };
+        algorithmComboBox.setBorder(BorderFactory.createTitledBorder("Algorithm"));
+        algorithmComboBox.setAlignmentX(0);
+        return algorithmComboBox;
     }
 
     private static JComboBox<Rendering> createRenderingComboBox(TreeMapSettings<String> settings) {
