@@ -1,12 +1,12 @@
-import org.jetbrains.annotations.NotNull;
-import org.mkui.font.crossplatform.CPFont;
-import org.mkui.swing.Orientation;
 import com.treemap.*;
+import org.jetbrains.annotations.NotNull;
 import org.mkui.colormap.MutableColorMap;
+import org.mkui.font.crossplatform.CPFont;
 import org.mkui.labeling.EnhancedLabel;
 import org.mkui.palette.FixedPalette;
 import org.mkui.palette.PaletteFactory;
 import org.mkui.swing.HierarchicalComboBox;
+import org.mkui.swing.Orientation;
 import org.mkui.swing.SingleSelectionComboBoxModel;
 import org.molap.dataframe.DataFrame;
 import org.molap.dataframe.JsonDataFrame;
