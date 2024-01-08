@@ -88,7 +88,7 @@ public class Demo {
 
     @NotNull
     private static HierarchicalComboBox<String> createGroupBy(Orientation orientation, TreeMapModel<AbstractTreeMapNode<Integer, String>, Integer, String> model, TreeMapSettings<String> settings) {
-        final HierarchicalComboBox<String> groupBy = new HierarchicalComboBox<String>(orientation, settings.getGroupByFieldsSelection(), model.getGroupByTreeMapColumns()) {
+        final HierarchicalComboBox<String> groupBy = new HierarchicalComboBox<String>(orientation, settings.getGroupByColumnsSelection(), model.getGroupByColumns()) {
             @Override
             public Dimension getMaximumSize() {
                 return super.getPreferredSize();
@@ -100,7 +100,7 @@ public class Demo {
     }
 
     private static JComboBox<String> createSizeComboBox(TreeMapModel<AbstractTreeMapNode<Integer, String>, Integer, String> model, TreeMapSettings<String> settings) {
-        final JComboBox<String> sizeComboBox = new JComboBox<String>(new SingleSelectionComboBoxModel<String>(settings.getSizeFieldSelection(), model.getSizeTreeMapColumns())) {
+        final JComboBox<String> sizeComboBox = new JComboBox<String>(new SingleSelectionComboBoxModel<String>(settings.getSizeColumnSelection(), model.getSizeColumns())) {
             @Override
             public Dimension getMaximumSize() {
                 return super.getPreferredSize();
@@ -112,7 +112,7 @@ public class Demo {
     }
 
     private static JComboBox<String> createColorComboBox(TreeMapModel<AbstractTreeMapNode<Integer, String>, Integer, String> model, TreeMapSettings<String> settings) {
-        final JComboBox<String> sizeComboBox = new JComboBox<String>(new SingleSelectionComboBoxModel<String>(settings.getColorColumnSelection(), model.getColorTreeMapColumns())) {
+        final JComboBox<String> sizeComboBox = new JComboBox<String>(new SingleSelectionComboBoxModel<String>(settings.getColorColumnSelection(), model.getColorColumns())) {
             @Override
             public Dimension getMaximumSize() {
                 return super.getPreferredSize();
