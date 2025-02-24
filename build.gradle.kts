@@ -3,6 +3,10 @@ plugins {
     application
 }
 
+tasks.compileJava {
+    options.release.set(21)
+}
+
 java {
     sourceCompatibility = JavaVersion.VERSION_21
     targetCompatibility = JavaVersion.VERSION_21
@@ -18,12 +22,12 @@ repositories {
     google()
 }
 
-val frameworkAttribute = Attribute.of("mkui", String::class.java)
-configurations.all {
-    afterEvaluate {
-        attributes.attribute(frameworkAttribute, "swing")
-    }
-}
+//val frameworkAttribute = Attribute.of("mkui", String::class.java)
+//configurations.all {
+//    afterEvaluate {
+//        attributes.attribute(frameworkAttribute, "swing")
+//    }
+//}
 
 dependencies {
     val localDependencies: String? by project
@@ -36,8 +40,8 @@ dependencies {
         val macrofocusVersion: String by project
         implementation("org.macrofocus:macrofocus-common:$macrofocusVersion")
         implementation("org.molap:molap:$macrofocusVersion")
-        implementation("org.mkui:mkui:$macrofocusVersion")
-        implementation("com.treemap:treemap:$macrofocusVersion")
+        implementation("org.mkui:mkui-swing:$macrofocusVersion")
+        implementation("com.treemap:treemap-swing:$macrofocusVersion")
     }
 }
 
@@ -56,9 +60,9 @@ distributions {
 
 //            from("TreeMap API for Java-Swing Developer Guide.pdf")
 
-            from("../treemap/build/dokka/html/") {
-                into("dokka")
-            }
+//            from("../treemap/build/dokka/html/") {
+//                into("dokka")
+//            }
         }
     }
 }
