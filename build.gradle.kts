@@ -21,12 +21,11 @@ repositories {
     google()
 }
 
-//val frameworkAttribute = Attribute.of("mkui", String::class.java)
-//configurations.all {
-//    afterEvaluate {
-//        attributes.attribute(frameworkAttribute, "swing")
-//    }
-//}
+// Picks the swing variants of the multiplatform modules (see "Multiple Targets Plan.md")
+val frameworkAttribute = Attribute.of("mkui", String::class.java)
+configurations.all {
+    attributes.attribute(frameworkAttribute, "swing")
+}
 
 dependencies {
     val localDependencies = project.findProperty("localDependencies") as String?
