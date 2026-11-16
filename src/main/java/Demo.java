@@ -99,51 +99,60 @@ public class Demo {
         return groupBy;
     }
 
-    private static JComboBox<String> createSizeComboBox(TreeMapModel<AbstractTreeMapNode<Integer, String>, Integer, String> model, TreeMapSettings<String> settings) {
+    /**
+     * A component under a title. The border is set on a panel around the component rather than on the component: the
+     * macOS look and feel ignores the border of a JComboBox, which then collapses under its title.
+     */
+    private static JPanel titled(String title, JComponent component) {
+        JPanel panel = new JPanel(new BorderLayout()) {
+            @Override
+            public Dimension getMaximumSize() {
+                return new Dimension(Integer.MAX_VALUE, getPreferredSize().height);
+            }
+        };
+        panel.setBorder(BorderFactory.createTitledBorder(title));
+        panel.add(component);
+        panel.setAlignmentX(0);
+        return panel;
+    }
+
+    private static JComponent createSizeComboBox(TreeMapModel<AbstractTreeMapNode<Integer, String>, Integer, String> model, TreeMapSettings<String> settings) {
         final JComboBox<String> sizeComboBox = new JComboBox<String>(new SingleSelectionComboBoxModel<String>(settings.getSizeColumnSelection(), model.getSizeColumns())) {
             @Override
             public Dimension getMaximumSize() {
                 return super.getPreferredSize();
             }
         };
-        sizeComboBox.setBorder(BorderFactory.createTitledBorder("Size"));
-        sizeComboBox.setAlignmentX(0);
-        return sizeComboBox;
+        return titled("Size", sizeComboBox);
     }
 
-    private static JComboBox<String> createColorComboBox(TreeMapModel<AbstractTreeMapNode<Integer, String>, Integer, String> model, TreeMapSettings<String> settings) {
+    private static JComponent createColorComboBox(TreeMapModel<AbstractTreeMapNode<Integer, String>, Integer, String> model, TreeMapSettings<String> settings) {
         final JComboBox<String> sizeComboBox = new JComboBox<String>(new SingleSelectionComboBoxModel<String>(settings.getColorColumnSelection(), model.getColorColumns())) {
             @Override
             public Dimension getMaximumSize() {
                 return super.getPreferredSize();
             }
         };
-        sizeComboBox.setBorder(BorderFactory.createTitledBorder("Size"));
-        sizeComboBox.setAlignmentX(0);
-        return sizeComboBox;
+        return titled("Color", sizeComboBox);
     }
 
-    private static JComboBox<Algorithm> createAlgorithmComboBox(TreeMapColumnSettings settings) {
+    private static JComponent createAlgorithmComboBox(TreeMapColumnSettings settings) {
         final JComboBox<Algorithm> algorithmComboBox = new JComboBox<Algorithm>(new SingleSelectionComboBoxModel<>(settings.getAlgorithmProperty(), AlgorithmFactory.Companion.getInstance().getAlgorithms())) {
             @Override
             public Dimension getMaximumSize() {
                 return super.getPreferredSize();
             }
         };
-        algorithmComboBox.setBorder(BorderFactory.createTitledBorder("Algorithm"));
-        algorithmComboBox.setAlignmentX(0);
-        return algorithmComboBox;
+        return titled("Algorithm", algorithmComboBox);
     }
 
-    private static JComboBox<Rendering> createRenderingComboBox(TreeMapSettings<String> settings) {
+    private static JComponent createRenderingComboBox(TreeMapSettings<String> settings) {
         final JComboBox<Rendering> renderingComboBox = new JComboBox<Rendering>(new SingleSelectionComboBoxModel<>(settings.getRenderingSelection(), RenderingFactory.getInstance().getRenderings())) {
             @Override
             public Dimension getMaximumSize() {
                 return super.getPreferredSize();
             }
         };
-        renderingComboBox.setBorder(BorderFactory.createTitledBorder("Rendering"));
-        renderingComboBox.setAlignmentX(0);
-        return renderingComboBox;
+        return titled("Rendering", renderingComboBox);
     }
 }
