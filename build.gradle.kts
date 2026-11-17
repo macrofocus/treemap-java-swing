@@ -54,7 +54,11 @@ distributions {
             from(".") {
                 exclude(".gradle/**")
                 exclude("build/**")
+                // The application of an unzipped distribution, made again by the build
+                exclude("bin/**", "lib/**")
             }
+            // Gradle 9 normalizes the permissions in archives (0644): ./gradlew must stay executable
+            filesMatching("**/gradlew") { permissions { unix("755") } }
 
 //            from("TreeMap API for Java-Swing Developer Guide.pdf")
 
